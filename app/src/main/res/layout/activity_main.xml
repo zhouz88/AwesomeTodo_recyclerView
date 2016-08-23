@@ -6,12 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.jiuzhang.guojing.awesometodo.MainActivity">
 
-    <ListView
-        android:id="@+id/main_list_view"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="#ffeeeeee"
-        android:dividerHeight="1dp"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/crappy_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+    </ScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

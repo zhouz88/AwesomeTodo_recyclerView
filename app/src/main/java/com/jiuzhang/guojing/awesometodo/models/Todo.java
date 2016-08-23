@@ -1,4 +1,4 @@
-package com.jiuzhang.guojing.awesometodo.data;
+package com.jiuzhang.guojing.awesometodo.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -21,15 +21,6 @@
         </activity>
 
 
-        <activity
-            android:name=".NewTodoActivity"
-            android:theme="@style/AppTheme.Transparent"
-            android:windowSoftInputMode="adjustResize"/>
-
-        <activity
-            android:name=".TodoDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
     </application>
 
 </manifest>
