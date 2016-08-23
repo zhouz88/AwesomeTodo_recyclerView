@@ -5,8 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.jiuzhang.guojing.awesometodo.models.Todo;
@@ -34,15 +33,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupUI(@NonNull List<Todo> todos) {
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.crappy_list);
-        linearLayout.removeAllViews();
-
-        TodoListConverter converter = new TodoListConverter(this, todos);
-
-        for (int i = 0; i < todos.size(); ++i) {
-            View view = converter.getView(i);
-            linearLayout.addView(view);
-        }
+        ListView listView = (ListView) findViewById(R.id.main_list_view);
+        listView.setAdapter(new TodoListAdapter(this, todos));
     }
 
     @NonNull
