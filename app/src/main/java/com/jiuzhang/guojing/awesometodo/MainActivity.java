@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.jiuzhang.guojing.awesometodo.models.Todo;
@@ -33,8 +34,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupUI(@NonNull List<Todo> todos) {
-        ListView listView = (ListView) findViewById(R.id.main_list_view);
-        listView.setAdapter(new TodoListAdapter(this, todos));
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new TodoListAdapter(todos));
     }
 
     @NonNull
