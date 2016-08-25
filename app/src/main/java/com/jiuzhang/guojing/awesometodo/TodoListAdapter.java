@@ -29,6 +29,14 @@ public class TodoListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Todo todo = data.get(position);
         ((TodoListViewHolder) holder).todoText.setText(todo.text);
+
+        if (position % 2 == 0) {
+            holder.itemView.setBackgroundResource(android.R.color.white);
+            ((TodoListViewHolder) holder).heightPlaceholder.setVisibility(View.GONE);
+        } else {
+            holder.itemView.setBackgroundResource(android.R.color.holo_purple);
+            ((TodoListViewHolder) holder).heightPlaceholder.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
