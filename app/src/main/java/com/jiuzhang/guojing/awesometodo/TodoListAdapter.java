@@ -5,14 +5,13 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.jiuzhang.guojing.awesometodo.models.Todo;
 
 import java.util.List;
 
-public class TodoListAdapter extends BaseAdapter {
+public class TodoListAdapter extends ViewHolderAdapter {
 
     private Context context;
     private List<Todo> data;
@@ -38,27 +37,23 @@ public class TodoListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder vh;
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.main_list_item, parent, false);
-
-            vh = new ViewHolder();
-            // we only find once
-            vh.todoText = (TextView) convertView.findViewById(R.id.main_list_item_text);
-            // cache the view holder
-            convertView.setTag(vh);
-        } else {
-            // convertView is not null, which means it contains a cached view holder
-            vh = (ViewHolder) convertView.getTag();
-        }
-
-        Todo todo = data.get(position);
-        vh.todoText.setText(todo.text);
-        return convertView;
+    protected ViewHolderAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int position) {
+        View view = LayoutInflater.from(context).inflate(R.layout.main_list_item, parent, false);
+        return new TodoListViewHolder(view);
     }
 
-    private static class ViewHolder {
+    @Override
+    protected void onBindViewHolder(ViewHolderAdapter.ViewHolder viewHolder, int position) {
+        Todo todo = (Todo) getItem(position);
+        ((TodoListViewHolder) viewHolder).todoText.setText(todo.text);
+    }
+
+    private static class TodoListViewHolder extends ViewHolderAdapter.ViewHolder {
         TextView todoText;
+
+        public TodoListViewHolder(@NonNull View view) {
+            super(view);
+            todoText = (TextView) view.findViewById(R.id.main_list_item_text);
+        }
     }
 }
