@@ -23,7 +23,7 @@ public class TodoListAdapter extends RecyclerView.Adapter {
         View view = LayoutInflater.from(parent.getContext())
                                   .inflate(R.layout.main_list_item, parent, false);
         return new TodoListViewHolder(view);
-    }
+    }// create a view return corresponding vh!
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
@@ -37,7 +37,7 @@ public class TodoListAdapter extends RecyclerView.Adapter {
             holder.itemView.setBackgroundResource(android.R.color.holo_purple);
             ((TodoListViewHolder) holder).heightPlaceholder.setVisibility(View.VISIBLE);
         }
-    }
+    }//put the data into vh;
 
     @Override
     public int getItemCount() {
